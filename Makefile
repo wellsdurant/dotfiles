@@ -5,9 +5,6 @@ all: help
 
 ## help: Display this help message
 help:
-	@echo "Dotfiles Management"
-	@echo "===================="
-	@echo ""
 	@echo "Usage: make [target]"
 	@echo ""
 	@echo "Targets:"
@@ -23,17 +20,14 @@ config:
 check: check-brew check-port check-sip
 
 
-## check-brew: Check Homebrew configuration
 check-brew:
 	@bash scripts/check_homebrew.sh
 
 
-## check-port: Check MacPorts configuration
 check-port:
 	@bash scripts/check_macports.sh
 
 
-## check-sip: Check SIP configuration for yabai
 check-sip:
 	@bash scripts/check_sip_for_yabai.sh
 
