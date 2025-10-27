@@ -1,0 +1,96 @@
+# espanso match file
+
+# For a complete introduction, visit the official docs at: https://espanso.org/docs/
+
+# You can use this file to define the base matches (aka snippets)
+# that will be available in every application when using espanso.
+
+# Matches are substitution rules: when you type the "trigger" string
+# it gets replaced by the "replace" string.
+matches:
+  # Simple text replacement
+  - trigger: ":espanso"
+    replace: "Hi there!"
+
+  # NOTE: espanso uses YAML to define matches, so pay attention to the indentation!
+
+  # But matches can also be dynamic:
+
+  # Print the current date
+  - trigger: ":date"
+    replace: "{{mydate}}"
+    vars:
+      - name: mydate
+        type: date
+        params:
+          format: "%Y-%m-%d"
+
+  - trigger: ":time"
+    replace: "{{mytime}}"
+    vars:
+      - name: mytime
+        type: date
+        params:
+          format: "%H:%M"
+
+  # Print the output of a shell command
+  - trigger: ":shell"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "echo 'Hello from your shell'"
+
+  # And much more! For more information, visit the docs: https://espanso.org/docs/
+  - trigger: ":indent"
+    replace: "> [!note|indent]"
+
+  # IPA
+  - trigger: ":=a"
+    replace: "ɑ"
+
+  - trigger: ":<a"
+    replace: "æ"
+
+  - trigger: ":=e"
+    replace: "ə"
+
+  - trigger: ":<e"
+    replace: "ɛ"
+
+  - trigger: ":>e"
+    replace: "ɜ"
+
+  - trigger: ":=i"
+    replace: "ɪ"
+
+  - trigger: ":<o"
+    replace: "ɔ"
+
+  - trigger: ":<u"
+    replace: "ʊ"
+
+  - trigger: ":>u"
+    replace: "ʌ"
+
+  - trigger: ":=?"
+    replace: "ʔ"
+
+  - trigger: ":>n"
+    replace: "ŋ"
+
+  - trigger: ":=t"
+    replace: "θ"
+
+  - trigger: ":=d"
+    replace: "ð"
+
+  - trigger: ":=s"
+    replace: "ʃ"
+
+  - trigger: ":=z"
+    replace: "ʒ"
+
+  - trigger: ":<|"
+    replace: "ˌ"

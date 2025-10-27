@@ -1,0 +1,4 @@
+[[session]]
+name = "Home"
+path = "~/"
+preview_command = "ls"

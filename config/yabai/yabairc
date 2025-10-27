@@ -1,0 +1,79 @@
+#!/usr/bin/env sh
+
+# ============================================================================
+# SCRIPTING ADDITION
+# ============================================================================
+# Automatically reload the scripting addition when macOS Dock restarts
+yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+# Load the scripting addition (required for advanced window management features)
+# NOTE: Requires passwordless sudo for yabai. Add to /etc/sudoers.d/yabai:
+#       <user> ALL=(root) NOPASSWD: sha256:<hash> <yabai_path> --load-sa
+sudo yabai --load-sa
+
+# ============================================================================
+# STATUS BAR
+# ============================================================================
+# Reserve space for an external status bar (e.g., SketchyBar)
+# Syntax: all:top_padding:bottom_padding
+# This reserves 32px at the top of all displays
+yabai -m config external_bar all:32:0
+
+# ============================================================================
+# MOUSE SUPPORT
+# ============================================================================
+# Set the modifier key for mouse actions (fn key in this case)
+yabai -m config mouse_modifier               fn
+# Define primary mouse button action: move windows
+yabai -m config mouse_action1                move
+# Define secondary mouse button action: resize windows
+yabai -m config mouse_action2                resize
+# Define behavior when dropping a window: swap with target window
+yabai -m config mouse_drop_action            swap
+# Make focus follow the mouse cursor
+yabai -m config mouse_follows_focus          on
+
+# ============================================================================
+# LAYOUT
+# ============================================================================
+# Set default layout to Binary Space Partitioning (automatic tiling)
+yabai -m config layout                       bsp
+
+# ============================================================================
+# PADDING AND GAPS
+# ============================================================================
+# Set padding between windows and screen edges (in pixels)
+yabai -m config top_padding                   5
+yabai -m config bottom_padding                5
+yabai -m config left_padding                  5
+yabai -m config right_padding                 5
+# Set gap between windows (in pixels)
+yabai -m config window_gap                    5
+
+# ============================================================================
+# SPLIT RATIOS
+# ============================================================================
+# Automatically balance window sizes when new windows are created or removed
+yabai -m config auto_balance                 on
+
+# ============================================================================
+# WINDOW MODIFICATIONS
+# ============================================================================
+# Disable window shadows for a cleaner look
+yabai -m config window_shadow                off
+
+# ============================================================================
+# APPLICATION RULES
+# ============================================================================
+# Set all applications to normal sub-layer by default
+yabai -m rule --add app=".*" sub-layer=normal
+# Disable window management for all applications by default
+yabai -m rule --add app=".*" manage=off
+# Enable window management specifically for Obsidian
+yabai -m rule --add app="^Obsidian$" manage=on
+# Enable window management specifically for Brave Browser
+yabai -m rule --add app="^Brave Browser$" manage=on
+# Set Claude to appear above other windows (always on top)
+yabai -m rule --add app="^Claude$" sub-layer=above
+# Apply all rules
+yabai -m rule --apply
+
