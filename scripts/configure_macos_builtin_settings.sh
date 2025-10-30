@@ -172,24 +172,13 @@ disable_hide_others_shortcut() {
     fi
 }
 
-# Function to disable "Hide Obsidian" keyboard shortcut
-disable_hide_obsidian_shortcut() {
-    local current_value=$(defaults read md.obsidian NSUserKeyEquivalents 2>/dev/null || echo "")
-    if echo "$current_value" | grep -q '"Hide Obsidian".*=.*"@~^$\\\\Uf70f"'; then
-        echo "  'Hide Obsidian' already disabled, skipping..."
-    else
-        echo "  Disabling 'Hide Obsidian' by remapping to <Cmd+Ctrl+Alt+Shift+F12>..."
-        defaults write md.obsidian NSUserKeyEquivalents -dict-add "Hide Obsidian" "@~^\$\Uf70f"
-        LOGOUT_NEEDED=true
-    fi
-}
-
 # Function to restart Dock if needed
 restart_dock_if_needed() {
     if [ "$DOCK_NEEDS_RESTART" = true ]; then
         echo "Restarting Dock..."
         killall Dock
         echo "Dock restarted"
+        echo ""
     fi
 }
 
@@ -233,7 +222,6 @@ configure_macos_builtin_settings() {
     configure_dnd_f16
     disable_minimize_shortcut
     disable_hide_others_shortcut
-    disable_hide_obsidian_shortcut
     echo ""
 
     # Apply changes

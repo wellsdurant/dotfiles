@@ -66,4 +66,5 @@ link_configs() {
             fi
         done
     fi
+    echo ""
 }

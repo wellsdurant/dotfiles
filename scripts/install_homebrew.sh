@@ -18,4 +18,5 @@ install_homebrew() {
             eval "$(/usr/local/bin/brew shellenv)"
         fi
     fi
+    echo ""
 }
