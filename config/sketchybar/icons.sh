@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 # Uses SF Symbols.
 
@@ -14,3 +14,11 @@ BATTERY_50=􀺶
 BATTERY_25=􀛩
 BATTERY_0=􀛪
 BATTERY_CHARGING=􀢋
+MEMORY_ICN=􀫦
+CPU_ICN=􀧓
+DATE_ICN=􀉉
+TIME_ICN=􀐫
+DND_ICN=􀆺
+NON_DND_ICN=􀆹
+NETWORK_DOWN_ICN=􀄩
+NETWORK_UP_ICN=􀄨

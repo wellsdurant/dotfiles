@@ -1,12 +1,29 @@
-PLUGIN_DIR="$HOME/.config/sketchybar/plugins"
-ITEM_DIR="$HOME/.config/sketchybar/items"
+#!/usr/bin/env bash
 
-source $HOME/.config/sketchybar/colors.sh
-source $HOME/.config/sketchybar/icons.sh
+# ================================================================
+# Sketchybar Configuration
+# ================================================================
 
+# ----------------------------------------------------------------
+# Directories
+# ----------------------------------------------------------------
+SCRIPT_DIR="$HOME/.config/sketchybar/scripts"
+
+# ----------------------------------------------------------------
+# Sources
+# ----------------------------------------------------------------
+source "$HOME/.config/sketchybar/colors.sh"
+source "$HOME/.config/sketchybar/icons.sh"
+
+# ----------------------------------------------------------------
+# Fonts
+# ----------------------------------------------------------------
 export FONT="SF Pro"
 export NERD_FONT="SFMono Nerd Font"
 
+# ----------------------------------------------------------------
+# Bar Appearance
+# ----------------------------------------------------------------
 sketchybar --bar height=30        \
                  blur_radius=100  \
                  position=top     \
@@ -15,6 +32,9 @@ sketchybar --bar height=30        \
                  color=0x15ffffff \
                  shadow=on
 
+# ----------------------------------------------------------------
+# Default Item Settings
+# ----------------------------------------------------------------
 sketchybar --default updates=when_shown                       \
                      drawing=on                               \
                      icon.font="$NERD_FONT:Regular:14.0"      \
@@ -24,16 +44,121 @@ sketchybar --default updates=when_shown                       \
                      label.padding_left=4                     \
                      label.padding_right=4                    \
                      icon.padding_left=4                      \
-                     icon.padding_right=4
+                     icon.padding_right=4                     \
+                     padding_left=4                           \
+                     padding_right=4
 
-source $ITEM_DIR/apple.sh
-source $ITEM_DIR/spaces.sh
-source $ITEM_DIR/window_title.sh
-source $ITEM_DIR/clock.sh
-source $ITEM_DIR/battery.sh
-source $ITEM_DIR/input_source.sh
+# ----------------------------------------------------------------
+# Helper Functions
+# ----------------------------------------------------------------
+source "$HOME/.config/sketchybar/helpers.sh"
 
+# ----------------------------------------------------------------
+# Left Side Items
+# ----------------------------------------------------------------
+# Apple Logo
+SPACE_ICONS=("1" "2" "3" "4" "5" "6" "7" "8" "9" "10")
+for i in $(seq 1 10); do
+    sid=$(($i))
+    sketchybar --add item apple.logo.$sid left                 \
+               --set apple.logo.$sid icon=$APPLE_ICN           \
+                                     icon.font="$FONT:Heavy:16.0" \
+                                     label.drawing=off            \
+                                     icon.padding_left=6          \
+                                     icon.padding_right=12        \
+                                     associated_space=$sid        \
+                                     display="active"
+done
 
+# Spaces
+for i in "${!SPACE_ICONS[@]}"; do
+    sid=$(($i+1))
+    sketchybar --add space space.$sid left                          \
+               --set space.$sid associated_space=$sid                      \
+                                icon=${SPACE_ICONS[i]}                     \
+                                icon.padding_left=8                        \
+                                icon.padding_right=8                       \
+                                background.padding_left=5                  \
+                                background.padding_right=5                 \
+                                background.color=0x44ffffff                \
+                                background.corner_radius=5                 \
+                                background.height=22                       \
+                                background.drawing=off                     \
+                                label.drawing=off                          \
+                                script="$SCRIPT_DIR/space.sh"              \
+                                icon.font="$FONT:Light:15.0"
+done
+
+# Window Title
+sketchybar --add item space_separator left                            \
+           --add item window_title left                               \
+           --set window_title script="$SCRIPT_DIR/window_title.sh"    \
+                              icon.drawing=off                         \
+                              label.font="$FONT:Semibold:15.0"         \
+           --subscribe window_title front_app_switched
+
+# ----------------------------------------------------------------
+# Right Side Items
+# ----------------------------------------------------------------
+add_item_with_border "battery" 10 "battery.sh"
+subscribe_item "battery" system_woke
+
+# Date & Time
+add_item_with_border "clock" 1 "clock.sh"
+
+add_item_with_border "date" 60 "date.sh"
+
+# System Monitors
+add_item_with_border "memory" 5 "memory.sh"
+subscribe_item "memory" system_woke
+
+add_item_with_border "cpu" 5 "cpu.sh"
+subscribe_item "cpu" system_woke
+
+# Network
+sketchybar --add item network.down right                         \
+           --set network.down label.font="$FONT:Medium:7"        \
+                              icon.drawing=off                   \
+                              y_offset=-6                        \
+                              width=0                            \
+                              update_freq=2                      \
+                              script="$SCRIPT_DIR/network.sh"    \
+                              background.padding_left=0          \
+                              background.padding_right=0         \
+                                                                 \
+           --add item network.up right                           \
+           --set network.up label.font="$FONT:Medium:7"          \
+                            icon.drawing=off                     \
+                            y_offset=6                           \
+                            width=30                             \
+                            background.padding_left=0            \
+                            background.padding_right=0           \
+                                                                 \
+           --add item network.prefix right                       \
+           --set network.prefix label.font="$FONT:Medium:14"     \
+                                icon.drawing=off                 \
+                                background.padding_left=0        \
+                                background.padding_right=0       \
+                                                                 \
+           --add bracket network network.prefix network.up network.down \
+           --set network background.border_color=0xff939ab7     \
+                         background.border_width=1              \
+                         background.color=0x44000000            \
+                         background.corner_radius=6             \
+                         background.height=24                   \
+                         background.padding_left=0              \
+                         background.padding_right=0
+
+# Input source
+add_item_with_border "input_source" 1 "input_source.sh" "icon.drawing=off"
+
+# Do not disturb mode
+add_item_with_border "dnd" 1 "dnd.sh" "label.drawing=off"
+subscribe_item "dnd" system_woke
+
+# ----------------------------------------------------------------
+# Finalize
+# ----------------------------------------------------------------
 sketchybar --update
 
 echo "sketchybar configuration loaded.."
