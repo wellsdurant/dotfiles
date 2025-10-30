@@ -13,9 +13,9 @@ check_sip_for_yabai() {
 
     # Get SIP status
     local sip_status=$(csrutil status)
-    echo "Current SIP Status:"
-    echo "$sip_status"
-    echo ""
+    # echo "Current SIP Status:"
+    # echo "$sip_status"
+    # echo ""
 
     # Check if SIP is completely disabled (not recommended but works)
     if echo "$sip_status" | grep -q "System Integrity Protection status: disabled"; then
