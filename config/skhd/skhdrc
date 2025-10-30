@@ -2,12 +2,16 @@
 # Space management
 ################################################################################
 
-## Focus a specific space (1–5)
+## Focus a specific space (1–9)
 alt - 1 : yabai -m space --focus 1
 alt - 2 : yabai -m space --focus 2
 alt - 3 : yabai -m space --focus 3
 alt - 4 : yabai -m space --focus 4
 alt - 5 : yabai -m space --focus 5
+alt - 6 : yabai -m space --focus 6
+alt - 7 : yabai -m space --focus 7
+alt - 8 : yabai -m space --focus 8
+alt - 9 : yabai -m space --focus 9
 
 ################################################################################
 # Window management
@@ -15,7 +19,6 @@ alt - 5 : yabai -m space --focus 5
 
 # Toggle fullscreen for the tiled focused window or maximize the float window
 alt - z : $HOME/.config/skhd/scripts/toggle_full_window.sh
-# alt - z : yabai -m window --toggle zoom-fullscreen
 
 # Focus to a specified tiled window
 alt - h : yabai -m window --focus west
@@ -29,15 +32,15 @@ alt + shift - l : yabai -m window --swap east
 alt + shift - k : yabai -m window --swap north
 alt + shift - j : yabai -m window --swap south
 
-# Send the focused tiled window to the next/prev space and follow focus
+# Send the focused tiled/floating window to the next/prev space and follow focus
 alt + shift - n : yabai -m window --space next --focus
 alt + shift - p : yabai -m window --space prev --focus
 
-# Send the focused tiled window to the next/prev display and follow focus
+# Send the focused tiled/floating window to the next/prev display and follow focus
 alt + shift + ctrl - n : yabai -m window --display next --focus
 alt + shift + ctrl - p : yabai -m window --display prev --focus
 
-# Create space and send the focused tiled window to the space and follow focus
+# Create space and send the focused tiled/floating window to the space and follow focus
 alt + shift + ctrl - l : yabai -m space --create && \
                          yabai -m window --space next --focus
 
@@ -46,14 +49,18 @@ alt + shift + ctrl - h : cur_space=$(yabai -m query --spaces --space | jq '.inde
                          yabai -m window --space prev --focus && \
                          yabai -m space --destroy ${cur_space}
 
-# Send the focused tiled window to a specified space and follow focus
+# Send the focused tiled/floating window to a specified space and follow focus
 alt + shift - 1 : yabai -m window --space  1 --focus
 alt + shift - 2 : yabai -m window --space  2 --focus
 alt + shift - 3 : yabai -m window --space  3 --focus
 alt + shift - 4 : yabai -m window --space  4 --focus
 alt + shift - 5 : yabai -m window --space  5 --focus
+alt + shift - 6 : yabai -m window --space  6 --focus
+alt + shift - 7 : yabai -m window --space  7 --focus
+alt + shift - 8 : yabai -m window --space  8 --focus
+alt + shift - 9 : yabai -m window --space  9 --focus
 
-# Resize for the focused tiled window
+# Resize for the focused tiled/floating window (best for the focused windows)
 alt + shift - left  : yabai -m window --resize left:-20:0 || yabai -m window --resize right:-20:0
 alt + shift - right : yabai -m window --resize right:20:0 || yabai -m window --resize left:20:0
 alt + shift - up    : yabai -m window --resize top:0:-20  || yabai -m window --resize bottom:0:-20
@@ -62,10 +69,10 @@ alt + shift - down  : yabai -m window --resize top:0:20   || yabai -m window --r
 # Equalize size of tiled windows (0x2A : "\")
 alt - 0x2A : yabai -m space --balance
 
-# Rotate tree
+# Rotate tree for the tiled windows
 alt - r : yabai -m space --rotate 90
 
-# Toggle window split type
+# Toggle window split type for the tiled windows
 alt - e : yabai -m window --toggle split
 
 # Toggle floating for the focused window
@@ -86,3 +93,4 @@ hyper - a : yabai -m window --grid 2:2:0:0:1:1  # Top-left quarter
 hyper - s : yabai -m window --grid 2:2:0:1:1:1  # Bottom-left quarter
 hyper - d : yabai -m window --grid 2:2:1:0:1:1  # Top-right quarter
 hyper - f : yabai -m window --grid 2:2:1:1:1:1  # Bottom-right quarter
+

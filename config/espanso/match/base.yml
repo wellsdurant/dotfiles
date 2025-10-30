@@ -46,6 +46,9 @@ matches:
   - trigger: ":indent"
     replace: "> [!note|indent]"
 
+  - trigger: ":sonnet"
+    replace: "%% The following content is adapted from [[Sonnet 4.5]] %%"
+
   # IPA
   - trigger: ":=a"
     replace: "ɑ"

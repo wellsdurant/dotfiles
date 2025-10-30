@@ -77,3 +77,8 @@ yabai -m rule --add app="^Claude$" sub-layer=above
 # Apply all rules
 yabai -m rule --apply
 
+# ============================================================================
+# JankyBorders
+# ============================================================================
+borders active_color=0xff6495ed inactive_color=0xff494d64 width=6.0 &
+

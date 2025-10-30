@@ -1,6 +1,5 @@
 return {
-  "nvim-telescope/telescope.nvim",
-  dependencies = { "nvim-telescope/telescope-live-grep-args.nvim" },
+  "nvim-telescope/telescope-live-grep-args.nvim",
   config = function()
     require("telescope").setup({
       defaults = {

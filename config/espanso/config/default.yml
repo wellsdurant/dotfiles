@@ -39,5 +39,9 @@
 
 # For a list of all the available options, visit the official docs at: https://espanso.org/docs/
 
+# Disable icon on the menu bar
+show_icon: false
+
 # Disable search bar
 search_shortcut: off
+

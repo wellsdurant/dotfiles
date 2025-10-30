@@ -52,7 +52,8 @@ set -gx LESS_TERMCAP_us (printf "\e[01;32m")
 # zoxide (smart cd command)
 zoxide init fish | source
 
-# Configuring fzf.fish: <Ctrl+O> to open the selected file with $EDITOR
+# Configuring fzf.fish: <Ctrl+O> to open the selected file with $EDITOR while
+# searching for directories and files
 set fzf_directory_opts --bind "ctrl-o:execute(nvim {} &> /dev/tty)"
 
 # =============================================================================
