@@ -31,6 +31,7 @@ REQUIRED_SCRIPTS=(
     "install_fisher.sh"
     "install_fish_plugins_using_fisher.sh"
     "configure_obsidian.sh"
+    "setup_git_lfs.sh"
 )
 
 for script in "${REQUIRED_SCRIPTS[@]}"; do
@@ -101,6 +102,12 @@ main() {
 
     # Configure Obsidian
     configure_obsidian
+
+    # Setup Git LFS
+    if ! setup_git_lfs; then
+        echo "⚠️  Git LFS setup failed, but continuing..."
+        echo ""
+    fi
 
     echo "Configuration complete!"
 }
