@@ -30,8 +30,8 @@ REQUIRED_SCRIPTS=(
     "setup_yabai.sh"
     "install_fisher.sh"
     "install_fish_plugins_using_fisher.sh"
-    "configure_obsidian.sh"
     "setup_git_lfs.sh"
+    "disable_hiding_itself.sh"
 )
 
 for script in "${REQUIRED_SCRIPTS[@]}"; do
@@ -100,14 +100,14 @@ main() {
         echo ""
     fi
 
-    # Configure Obsidian
-    configure_obsidian
-
     # Setup Git LFS
     if ! setup_git_lfs; then
         echo "⚠️  Git LFS setup failed, but continuing..."
         echo ""
     fi
+
+    # Disable "Hide" shortcuts for applications
+    disable_hiding_itself
 
     echo "Configuration complete!"
 }
