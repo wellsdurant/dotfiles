@@ -49,6 +49,12 @@ matches:
   - trigger: ":sonnet"
     replace: "%% The following content is adapted from [[Sonnet 4.5]] %%"
 
+  - trigger: ":gpt5"
+    replace: "%% The following content is adapted from [[GPT-5 auto]] %%"
+
+  - trigger: ":pending"
+    replace: "%% Pending: Update this as needed %%"
+
   # IPA
   - trigger: ":=a"
     replace: "ɑ"
