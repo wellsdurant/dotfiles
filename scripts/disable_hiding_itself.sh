@@ -55,11 +55,26 @@ disable_hiding_itself() {
     echo ""
 
     # Disable hide shortcut for Brave Browser
-    disable_hide_shortcut "Brave Browser" "/Applications/Brave Browser.app" "com.brave.Browser" "Hide Brave Browser"
+    disable_hide_shortcut "Brave Browser" "/Applications/Brave Browser.app" "com.brave.Browser" "Hide Brave"
     echo ""
 
     # Disable hide shortcut for Claude
-    disable_hide_shortcut "Claude" "/Applications/Claude.app" "com.anthropic.claude" "Hide Claude"
+    # disable_hide_shortcut "Claude" "/Applications/Claude.app" "com.anthropic.claude" "Hide Claude"
+    # echo ""
+
+    disable_hide_shortcut "Claude" "/Applications/Claude.app" "com.anthropic.claudefordesktop" "Hide Claude"
+    echo ""
+
+    # Disable hide shortcut for Zotero
+    disable_hide_shortcut "Zotero" "/Applications/Zotero.app" "org.zotero.zotero" "Hide Zotero"
+    echo ""
+
+    # Disable hide shortcut for PDF Expert
+    disable_hide_shortcut "PDF Expert" "/Applications/PDF Expert.app" "com.readdle.PDFExpert-Mac" "Hide PDF Expert"
+    echo ""
+
+    # Disable hide shortcut for Visual Studio Code
+    disable_hide_shortcut "Visual Studio Code" "/Applications/Visual Studio Code.app" "com.microsoft.VSCode" "Hide Visual Studio Code"
     echo ""
 
     # Handle logout if needed
