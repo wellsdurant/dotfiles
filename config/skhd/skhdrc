@@ -76,16 +76,13 @@ alt - r : yabai -m space --rotate 90
 alt - e : yabai -m window --toggle split
 
 # Focus on specific applications in current space or open if not found
-# alt - t : $HOME/.config/skhd/scripts/focus_or_open_kitty.sh
-# alt - o : $HOME/.config/skhd/scripts/focus_or_open_obsidian.sh
-# alt - b : $HOME/.config/skhd/scripts/focus_or_open_brave.sh
 alt - c : $HOME/.config/skhd/scripts/focus_or_open_claude.sh
 
 # Close specific application windows
 alt + shift - c : $HOME/.config/skhd/scripts/close_claude.sh
 
 # Toggle floating for the focused window
-alt - t : yabai -m window --toggle float;\
+alt - f : yabai -m window --toggle float;\
           yabai -m window --grid 4:4:1:1:2:2
 
 # Manage the location the focused floating window (--grid rows:cols, x:y, width:height)

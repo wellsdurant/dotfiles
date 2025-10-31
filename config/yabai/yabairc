@@ -66,12 +66,8 @@ yabai -m config window_shadow                off
 # ============================================================================
 # Set all applications to normal sub-layer by default
 yabai -m rule --add app=".*" sub-layer=normal
-# Disable window management for all applications by default
-yabai -m rule --add app=".*" manage=off
-# Enable window management specifically for Obsidian
-yabai -m rule --add app="^Obsidian$" manage=on
-# Enable window management specifically for Brave Browser
-yabai -m rule --add app="^Brave Browser$" manage=on
+# Disable window management for kitty
+yabai -m rule --add app="^kitty$" manage=off
 # Set Claude to appear above other windows (always on top)
 yabai -m rule --add app="^Claude$" manage=off sub-layer=above
 # Apply all rules
