@@ -73,7 +73,7 @@ yabai -m rule --add app="^Obsidian$" manage=on
 # Enable window management specifically for Brave Browser
 yabai -m rule --add app="^Brave Browser$" manage=on
 # Set Claude to appear above other windows (always on top)
-yabai -m rule --add app="^Claude$" sub-layer=above
+yabai -m rule --add app="^Claude$" manage=off sub-layer=above
 # Apply all rules
 yabai -m rule --apply
 
