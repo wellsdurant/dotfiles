@@ -15,43 +15,71 @@ HOMEBREW_APPS=(
     ## Menu bar
     "sketchybar|formula"
 
-    # Window Management
+    ## Tiling Window Management
     "koekeishiya/formulae/yabai|formula"
+
+    ## Highlighting the active window
+    "FelixKratz/formulae/borders|formula"
+
+    ## Keyboard customizers
+    "karabiner-elements|cask"
     "koekeishiya/formulae/skhd|formula"
+
+    ## Click everything using a keyboard
+    "homerow|cask"
+
+    ## Text expanders
+    "espanso|cask"
+
+    ## Launchers
+    "raycast|cask"
+
+    # Main apps
+    "brave-browser|cask"
+    "obsidian|cask"
+    "zotero|cask"
+    "pdf-expert|cask"
+    "visual-studio-code|cask"
+    "claude|cask"
 
     # Fonts
     "font-jetbrains-mono-nerd-font|cask"
     "sf-symbols|cask"
 
-    # Productivity Tools
-    "karabiner-elements|cask"
-    "homerow|cask"
-    "espanso|cask"
-    "raycast|cask"
-
-    # Terminal & Shell
-    "kitty|cask"
+    # Shells
     "fish|formula"
+
+    # Terminal emulators
+    "kitty|cask"
+
+    # Terminal multiplexers
     "tmux|formula"
 
-    # Development Tools
-    "visual-studio-code|cask"
+    # tmux sessions managers
+    "sesh|formula"
+
+    # Terminal text editors
     "neovim|formula"
-    "uv|formula"
+
+    # Git related tools
+    "git-lfs|formula"
+    "gh|formula"
 
     # Command-line Tools
     "tlrc|formula"
     "zoxide|formula"
-    "sesh|formula"
+    "bat|formula"
     "fzf|formula"
     "fd|formula"
+    "yazi|formula"
+    "gum|formula"
 
-    # Applications
-    "claude|cask"
-    "brave-browser|cask"
-    "obsidian|cask"
-    "zotero|cask"
-    "pdf-expert|cask"
+    # Package managers
+    "uv|formula"        # Python
+    "luarocks|formula"  # Lua
+
+    # Runtime environments
+    "node|formula"      # JavaScript
 )
 
 # Function to install Homebrew applications
