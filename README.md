@@ -32,6 +32,8 @@ Personal macOS configuration and dotfiles.
 │   ├── link_configs.sh                        # Symlink configuration files
 │   ├── install_fisher.sh                      # Fisher plugin manager installation
 │   ├── install_fish_plugins_using_fisher.sh   # Fish shell plugins installation
+│   ├── disable_hiding_itself.sh               # Disable "Hide" shortcuts for applications
+│   ├── setup_git_lfs.sh                       # Git LFS setup
 │   ├── check_sip_for_yabai.sh                 # Check SIP configuration for yabai
 │   ├── check_homebrew.sh                      # Check Homebrew configuration
 │   ├── check_macports.sh                      # Check MacPorts configuration
@@ -58,6 +60,8 @@ This will:
 7. Link configuration files to home directory
 8. Install Fisher plugin manager for Fish shell
 9. Install Fish shell plugins via Fisher
+10. Setup Git LFS for large file support
+11. Disable "Hide" shortcuts for applications (Obsidian, Brave Browser, Claude, Zotero, PDF Expert, VS Code)
 
 Check all configurations:
 
@@ -90,11 +94,17 @@ This will list all software that needs upgrading from Homebrew, MacPorts, and Ma
 
 **Keyboard Shortcuts:**
 - Disable Spotlight keyboard shortcut (`<Cmd+Space>`)
-- Set `<Alt+Space>` to select the previous input source 
+- Set `<Alt+Space>` to select the previous input source
 - Set `<F16>` to toggle Do Not Disturb
 - Disable "Minimize" (`<Cmd+M>`) by remapping to the unlikely key combination `<Cmd+Ctrl+Alt+Shift+F12>`
 - Disable "Hide Others" (`<Cmd+Alt+H>`) by remapping to the unlikely key combination `<Cmd+Ctrl+Alt+Shift+F12>`
-- Disable "Hide Obsidian" (`<Cmd+H>` in Obsidian) by remapping to the unlikely key combination `<Cmd+Ctrl+Alt+Shift+F12>`
+- Disable "Hide" shortcuts (`<Cmd+H>`) in the following applications by remapping to `<Cmd+Ctrl+Alt+Shift+F12>`:
+  - Obsidian
+  - Brave Browser
+  - Claude
+  - Zotero
+  - PDF Expert
+  - Visual Studio Code
 
 ### Applications Installed
 
