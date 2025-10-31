@@ -21,8 +21,12 @@ disable_hide_shortcut() {
         echo "  '$menu_item' already disabled for $app_name, skipping..."
     else
         echo "  Disabling '$menu_item' for $app_name by remapping to <Cmd+Ctrl+Alt+Shift+F12>..."
-        defaults write "$bundle_id" NSUserKeyEquivalents -dict-add "$menu_item" "@~^\$\Uf70f"
-        LOGOUT_NEEDED=true
+        if defaults write "$bundle_id" NSUserKeyEquivalents -dict-add "$menu_item" "@~^\$\Uf70f"; then
+            LOGOUT_NEEDED=true
+        else
+            echo "  ⚠️  Failed to disable '$menu_item' for $app_name"
+            return 1
+        fi
     fi
 }
 
@@ -40,7 +44,6 @@ logout_if_needed() {
             exit 0
         else
             echo "Logout cancelled. Please log out manually to apply all changes."
-            exit 0
         fi
     fi
 }
@@ -59,9 +62,6 @@ disable_hiding_itself() {
     echo ""
 
     # Disable hide shortcut for Claude
-    # disable_hide_shortcut "Claude" "/Applications/Claude.app" "com.anthropic.claude" "Hide Claude"
-    # echo ""
-
     disable_hide_shortcut "Claude" "/Applications/Claude.app" "com.anthropic.claudefordesktop" "Hide Claude"
     echo ""
 
