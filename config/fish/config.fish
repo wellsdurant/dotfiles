@@ -70,6 +70,17 @@ if test -d "$HOME/.venv"
     source "$HOME/.venv/bin/activate.fish"
 end
 
+# Customize prompt: replace "> " with newline and "$ "
+if not functions -q __original_fish_prompt
+    functions -c fish_prompt __original_fish_prompt
+    function fish_prompt
+        set -l prompt (__original_fish_prompt)
+        # Replace "> " with a newline followed by "$ "
+        string replace '> ' '
+$ ' $prompt
+    end
+end
+
 # pnpm (Node.js package manager)
 set -gx PNPM_HOME "$HOME/Library/pnpm"
 if not string match -q -- $PNPM_HOME $PATH
